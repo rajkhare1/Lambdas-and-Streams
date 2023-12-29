@@ -15,7 +15,7 @@ public class Exercise5And6 {
 	private static void printNumberOfCharactersInEachCourseName(List<String> courses) {
     
 		courses.stream()
-		.map(course -> course.length())
+		.map(course -> course+" "+course.length())
 			.forEach(System.out::println);
 
 	}
