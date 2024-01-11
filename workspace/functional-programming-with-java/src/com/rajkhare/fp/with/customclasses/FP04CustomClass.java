@@ -2,6 +2,7 @@ package com.rajkhare.fp.with.customclasses;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 record Course(String name, String category,int reviewScore, int noOfStudents) {
@@ -182,7 +183,18 @@ public class FP04CustomClass {
 //{DevOps=[AWS, azure, Docker, Kubernates], FullStack=[FullStack], Microservices=[API, Microservices], 
 //		Framework=[Spring, Spring Boot]}
 		
+		
+		//Higher order function => functions returns another function as the return value 
+		Predicate<Course> reviewScoreGreaterThan95Predicate = createPredicateWithCutoffReviewScore(95);
+		Predicate<Course> reviewScoreGreaterThan90Predicate = createPredicateWithCutoffReviewScore(90);
+		
 	}
+
+	private static Predicate<Course> createPredicateWithCutoffReviewScore(int cutOffReviewScore) {
+		return course -> course.reviewScore()>cutOffReviewScore;
+	}
+	
+	//courses.stream().peek(System.out::println).filter(course -> course.length()>11).map(String::toUpperCase).findFirst()
 	
 	
 
